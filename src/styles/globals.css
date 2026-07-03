@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f8fafc;
+  color: #0F2744;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, rgba(244, 166, 34, 0.08), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(15, 39, 68, 0.06), transparent 26%),
+    #f8fafc;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(180deg, rgba(229, 231, 235, 0.85) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(229, 231, 235, 0.85) 1px, transparent 1px);
+  background-size: 70px 70px;
+  opacity: 0.2;
+}
+
+.fade-in {
+  animation: fadeIn 0.85s ease-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pagina {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+}
+
+.circuito {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 26%;
+  background-image: radial-gradient(circle at 20% 20%, rgba(15, 39, 68, 0.12) 1px, transparent 1px),
+    linear-gradient(180deg, transparent 10%, rgba(15, 39, 68, 0.04) 10%, rgba(15, 39, 68, 0.04) 11%, transparent 11%),
+    linear-gradient(90deg, rgba(15, 39, 68, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  opacity: 0.35;
+}
+
+.circuito-esquerdo {
+  left: 0;
+}
+
+.circuito-direito {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.painel {
+  position: relative;
+  width: min(100%, 450px);
+  background: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 40px 120px rgba(15, 39, 68, 0.08);
+  padding: 2.5rem 2rem 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.conteudo-formulario {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .conteudo-formulario {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .painel {
+    width: min(100%, 100%);
+    border-radius: 28px;
+    padding: 2rem 1.5rem 2rem;
+  }
+}
+
+.cabecalho-logo {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.badge-logo {
+  width: 92px;
+  height: 92px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 16px 40px rgba(15, 39, 68, 0.08);
+  display: grid;
+  place-items: center;
+}
+
+.badge-logo svg {
+  width: 42px;
+  height: 42px;
+  color: #0F2744;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.35em;
+  font-weight: 700;
+  color: #0F2744;
+}
+
+.titulo-principal {
+  margin: 0;
+  font-size: 2.25rem;
+  line-height: 1.05;
+  font-weight: 800;
+  color: #0F2744;
+}
+
+.subtitulo {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.formulario {
+  display: grid;
+  gap: 1rem;
+}
+
+.campo-rotulo {
+  display: grid;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: #0f2744;
+  font-weight: 600;
+}
+
+.campo-input {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.85rem;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 0.95rem 1rem;
+  border: 1.75px solid rgba(209, 213, 219, 0.7);
+  box-shadow: 0 18px 40px rgba(15, 39, 68, 0.06);
+}
+
+.campo-input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: #0f2744;
+}
+
+.campo-input input::placeholder {
+  color: #94a3b8;
+}
+
+.campo-email {
+  border-color: #0F2744;
+}
+
+.campo-senha {
+  border-color: #F4A622;
+}
+
+.icone-campo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0F2744;
+}
+
+.icone-campo svg {
+  width: 20px;
+  height: 20px;
+}
+
+.botao-primario {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #0F2744;
+  background: linear-gradient(90deg, #F4A622 0%, #D8922F 100%);
+  box-shadow: 0 18px 40px rgba(244, 166, 34, 0.22);
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.botao-primario:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.05);
+}
+
+.botao-primario:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.card-footer,
+.links {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+.footer-link,
+.link {
+  border: none;
+  background: transparent;
+  color: #0F2744;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-link:hover,
+.link:hover {
+  color: #f4a622;
+}
+
+.erro {
+  margin: 0;
+  color: #c62828;
+  font-size: 0.95rem;
+}
+
+.sucesso {
+  margin: 0;
+  color: #2e7d32;
+  font-size: 0.95rem;
+}
