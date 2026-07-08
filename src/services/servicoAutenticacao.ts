@@ -1,5 +1,4 @@
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-const loginUrl = process.env.NEXT_PUBLIC_LOGIN_URL || `${baseUrl}/login-usuarios/v1/login/entrar`;
 
 interface DadosLogin {
   email: string;
@@ -33,7 +32,7 @@ async function tratarResposta(resposta: Response) {
 
 export const servicoAutenticacao = {
   async login(dados: DadosLogin) {
-    return fetch(loginUrl, {
+    return fetch(`${baseUrl}/login-usuarios/v1/login/entrar`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
