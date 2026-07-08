@@ -1,16 +1,3 @@
-const baseUrl = process.env.NEXT_PUBLIC_API_URL?.trim();
-
-function obterBaseUrl() {
-  if (!baseUrl) {
-    throw new Error('Variavel NEXT_PUBLIC_API_URL nao configurada. Defina a URL da API no ambiente e refaca o deploy.');
-  }
-
-  return baseUrl.replace(/\/+$/, '');
-}
-
-function montarUrl(caminho: string) {
-  return `${obterBaseUrl()}${caminho}`;
-}
 
 interface DadosLogin {
   email: string;
@@ -44,7 +31,7 @@ async function tratarResposta(resposta: Response) {
 
 export const servicoAutenticacao = {
   async login(dados: DadosLogin) {
-    return fetch(montarUrl('/login-usuarios/v1/login/entrar'), {
+    return fetch(`/login-usuarios/v1/login/entrar`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +41,7 @@ export const servicoAutenticacao = {
   },
 
   async registrar(dados: DadosRegistro) {
-    return fetch(montarUrl('/login-usuarios/v1/login/criar'), {
+    return fetch(`/login-usuarios/v1/login/criar`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -64,7 +51,7 @@ export const servicoAutenticacao = {
   },
 
   async recuperarSenha(email: string) {
-    return fetch(montarUrl('/login-usuarios/v1/confirmar-email/enviar-email-recuperacao'), {
+    return fetch(`/login-usuarios/v1/confirmar-email/enviar-email-recuperacao`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email.trim() }),
@@ -72,7 +59,7 @@ export const servicoAutenticacao = {
   },
 
   async enviarCodigoConfirmacao(email: string) {
-    return fetch(montarUrl('/login-usuarios/v1/confirmar-email/enviar-codigo'), {
+    return fetch(`/login-usuarios/v1/confirmar-email/enviar-codigo`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
@@ -80,7 +67,7 @@ export const servicoAutenticacao = {
   },
 
   async confirmarCodigo(email: string, codigo: string) {
-    return fetch(montarUrl('/login-usuarios/v1/confirmar-email/confirmar-codigo'), {
+    return fetch(`/login-usuarios/v1/confirmar-email/confirmar-codigo`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, codigo }),
@@ -88,7 +75,7 @@ export const servicoAutenticacao = {
   },
 
   async alterarSenha(dados: DadosAlteracaoSenha) {
-    return fetch(montarUrl('/login-usuarios/v1/login/alterar-senha'), {
+    return fetch(`/login-usuarios/v1/login/alterar-senha`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dados),
@@ -96,7 +83,7 @@ export const servicoAutenticacao = {
   },
 
   async criarConta(dados: { nome: string; telefone: string; email: string; senha: string }) {
-    return fetch(montarUrl('/login-usuarios/v1/login/criar'), {
+    return fetch(`/login-usuarios/v1/login/criar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dados),
